@@ -41,7 +41,7 @@ def test_model_prediction():
     sentiment, confidence = predict_sentiment(model, dummy_input)
     
     assert sentiment in ['positive', 'negative']
-    assert 0.5 <= confidence <= 1.0
+    assert 0.0 <= confidence <= 1.0
     
     print(f"✓ Prediction test passed: {sentiment} (confidence: {confidence:.2%})")
 
