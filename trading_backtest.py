@@ -3,7 +3,6 @@ Main entry point for running algorithmic trading strategy backtests.
 Demonstrates the event-driven backtesting engine with momentum strategy.
 """
 
-import os
 from data_handler import HistoricCSVDataHandler
 from strategy import MomentumStrategy, BuyAndHoldStrategy
 from portfolio import Portfolio

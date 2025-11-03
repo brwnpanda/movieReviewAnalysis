@@ -4,7 +4,6 @@ Tracks positions, generates orders from signals, and manages capital.
 """
 
 from event import OrderEvent, FillEvent
-from collections import defaultdict
 
 
 class Portfolio:
