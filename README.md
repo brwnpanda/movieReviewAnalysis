@@ -108,11 +108,20 @@ Expected results:
 
 ```
 movieReviewAnalysis/
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-├── sentiment_analysis.py     # Main training script
-├── demo.py                   # Demo/testing script
-└── sentiment_model.h5        # Saved model (after training)
+├── README.md                    # Project documentation
+├── requirements.txt             # Python dependencies
+├── sentiment_analysis.py        # Main training script
+├── demo.py                      # Demo/testing script
+├── sentiment_model.h5           # Saved model (after training)
+├── trading_backtest.py          # Algorithmic trading backtester
+├── event.py                     # Event system for backtesting
+├── data_handler.py              # Market data handler
+├── strategy.py                  # Trading strategies
+├── portfolio.py                 # Portfolio management
+├── execution.py                 # Order execution simulator
+├── backtest.py                  # Main backtesting engine
+├── test_sentiment.py            # Tests for sentiment analysis
+└── test_trading_backtest.py    # Tests for trading backtester
 ```
 
 ## Requirements
@@ -121,6 +130,47 @@ movieReviewAnalysis/
 - TensorFlow 2.10+
 - NumPy 1.21+
 - scikit-learn 1.0+
+- pandas 1.3+
+
+## Algorithmic Trading Strategy Backtester
+
+In addition to sentiment analysis, this repository includes a **discrete event-based backtesting engine** for quantitative trading strategies.
+
+### Features
+
+- **Event-Driven Architecture**: Uses a priority queue (min-heap) to manage time-stamped events
+- **Event Types**: Market data, signals, orders, and fills
+- **Momentum Strategy**: Custom momentum-based strategy using moving average crossovers
+- **Performance Metrics**: Sharpe ratio, maximum drawdown, win rate, total return
+- **Synthetic Data**: Generates realistic market data for testing when CSV files aren't available
+
+### Running the Backtester
+
+```bash
+python trading_backtest.py
+```
+
+This will:
+- Run a momentum strategy backtest on synthetic market data
+- Compare momentum strategy against buy-and-hold benchmark
+- Display performance metrics and results
+
+### Key Components
+
+1. **Event System** (`event.py`): Time-stamped events (MarketEvent, SignalEvent, OrderEvent, FillEvent)
+2. **Data Handler** (`data_handler.py`): Loads and streams historical market data
+3. **Strategy** (`strategy.py`): Implements momentum-based and buy-and-hold strategies
+4. **Portfolio** (`portfolio.py`): Manages positions, cash, and generates orders
+5. **Execution** (`execution.py`): Simulates order execution with optional slippage
+6. **Backtest Engine** (`backtest.py`): Priority queue-based discrete event simulation
+
+### Testing the Backtester
+
+```bash
+python test_trading_backtest.py
+```
+
+This runs comprehensive unit tests for all backtesting components.
 
 ## Future Improvements
 
@@ -129,6 +179,9 @@ movieReviewAnalysis/
 - Add attention mechanisms
 - Create web interface for predictions
 - Add visualization of training metrics
+- Add more trading strategies (mean reversion, pairs trading)
+- Support for real market data (CSV, API integration)
+- Add visualization of equity curves and performance
 
 ## License
 
@@ -136,4 +189,4 @@ This project is open source and available for educational purposes.
 
 ## Author
 
-Personal project demonstrating NLP and deep learning skills.
+Personal project demonstrating NLP, deep learning, and quantitative finance skills.
